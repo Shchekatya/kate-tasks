@@ -27,7 +27,8 @@ function App() {
   const handleDeleteRow = (rowIndex: number) => {
     console.log(rowIndex);
     const newState = [...state];
-    setState(newState.splice(rowIndex, 1));
+    newState.splice(rowIndex, 1);
+    setState(newState);
   };
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
