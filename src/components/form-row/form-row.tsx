@@ -8,15 +8,13 @@ type TFormProp = {
     surname: string;
   };
   handleAddRow: MouseEventHandler<HTMLButtonElement>;
-  handleDeleteRow: MouseEventHandler<HTMLButtonElement>;
+  handleDeleteRow: any;
   handleChange: ChangeEventHandler<HTMLInputElement>;
   index: number;
 };
 
 function FormRow(props: TFormProp) {
-  const handleYesRow: MouseEventHandler<HTMLButtonElement> = (event) => {
-    console.log(props.index);
-  };
+  const rowIndex = props.index;
   return (
     <div className="form-row">
       <TextField
@@ -37,8 +35,13 @@ function FormRow(props: TFormProp) {
       />
       <div className="form-row__buttons">
         <Button onClick={props.handleAddRow}>Add</Button>
-        <Button onClick={props.handleDeleteRow}>Delete</Button>
-        <Button onClick={handleYesRow}>Yes</Button>
+        <Button
+          onClick={() => {
+            props.handleDeleteRow(rowIndex);
+          }}
+        >
+          Delete
+        </Button>
       </div>
     </div>
   );

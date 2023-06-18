@@ -24,8 +24,10 @@ function App() {
     setState([...state, defaultValue]);
   };
 
-  const handleDeleteRow: MouseEventHandler<HTMLButtonElement> = (event) => {
-    console.log(event);
+  const handleDeleteRow = (rowIndex: number) => {
+    console.log(rowIndex);
+    const newState = [...state];
+    setState(newState.splice(rowIndex, 1));
   };
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
